@@ -250,7 +250,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                    	x-axis = data.get(Accelerometer.LEFT_RIGHT.ordinal());
+                    	x_axis = data.get(Accelerometer.LEFT_RIGHT.ordinal()).intValue();
 //                        TextView acc_x = (TextView) findViewById(R.id.acc_x);
 //                        TextView acc_y = (TextView) findViewById(R.id.acc_y);
 //                        TextView acc_z = (TextView) findViewById(R.id.acc_z);

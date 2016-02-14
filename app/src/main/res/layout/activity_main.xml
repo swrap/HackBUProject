@@ -2,22 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:weightSum="1">
+	android:weightSum="1"
+	android:background="#f6a209">
 
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Welcome to Verisimilillilll"
+		android:text="Welcome to Tippy Toes!"
 		android:id="@+id/climbText"
 		android:visibility="visible"
-		android:textSize="50dp" />
+		android:textSize="50dp"
+		android:gravity="center_horizontal"
+		android:autoText="false"
+		android:textStyle="normal|bold"
+		android:typeface="normal" />
 
 	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center_horizontal"
-		android:paddingTop="@dimen/activity_horizontal_margin">
+		android:paddingTop="@dimen/activity_horizontal_margin"
+		android:longClickable="false"
+		android:layout_weight="0"
+		android:baselineAligned="false"
+		android:backgroundTint="#ffffff">
 
 		<Button
 			android:layout_width="wrap_content"
@@ -39,7 +48,8 @@
 			android:layout_height="wrap_content"
 			android:text="Hard"
 			android:id="@+id/hardButton"
-			android:enabled="false" />
+			android:enabled="false"
+			android:nestedScrollingEnabled="false" />
 	</LinearLayout>
 
 	<ProgressBar

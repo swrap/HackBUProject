@@ -18,14 +18,13 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090007;
-        public static final int climbText=0x7f090001;
-        public static final int connectionStatus=0x7f090006;
-        public static final int easyButton=0x7f090002;
-        public static final int gameInt=0x7f090000;
-        public static final int hardButton=0x7f090004;
-        public static final int mediumButton=0x7f090003;
-        public static final int progressConnection=0x7f090005;
+        public static final int action_settings=0x7f090006;
+        public static final int climbText=0x7f090000;
+        public static final int connectionStatus=0x7f090005;
+        public static final int easyButton=0x7f090001;
+        public static final int hardButton=0x7f090003;
+        public static final int mediumButton=0x7f090002;
+        public static final int progressConnection=0x7f090004;
     }
     public static final class layout {
         public static final int activity_game=0x7f040000;
