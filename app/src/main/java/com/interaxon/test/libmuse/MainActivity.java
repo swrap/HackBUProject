@@ -178,7 +178,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         final WeakReference<Activity> activityRef;
         private MuseFileWriter fileWriter;
-        public static
+//        public static
 
         DataListener(final WeakReference<Activity> activityRef) {
             this.activityRef = activityRef;
@@ -229,9 +229,9 @@ public class MainActivity extends Activity implements OnClickListener {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        TextView blinkText = (TextView) findViewById(R.id.blinkText);
-                        blinkText.setText(String.format(
-                            "%s%d", blinkText.getText().toString(), boolToInt(p.getBlink())));
+//                        TextView blinkText = (TextView) findViewById(R.id.blinkText);
+//                        blinkText.setText(String.format(
+//                            "%s%d", blinkText.getText().toString(), boolToInt(p.getBlink())));
                     }
                 });
             }

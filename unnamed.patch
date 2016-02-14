@@ -1,0 +1,60 @@
+Index: .idea/libraries/libmuseandroid.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/libmuseandroid.xml	(revision )
++++ .idea/libraries/libmuseandroid.xml	(revision )
+@@ -0,0 +1,9 @@
++<component name="libraryTable">
++  <library name="libmuseandroid">
++    <CLASSES>
++      <root url="jar://$PROJECT_DIR$/app/libs/libmuseandroid.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/support_annotations_21_0_3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/support_annotations_21_0_3.xml	(revision )
++++ .idea/libraries/support_annotations_21_0_3.xml	(revision )
+@@ -0,0 +1,11 @@
++<component name="libraryTable">
++  <library name="support-annotations-21.0.3">
++    <CLASSES>
++      <root url="jar://C:/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES>
++      <root url="jar://C:/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/support_v4_21_0_3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/support_v4_21_0_3.xml	(revision )
++++ .idea/libraries/support_v4_21_0_3.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="support-v4-21.0.3">
++    <CLASSES>
++      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar!/" />
++      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/classes.jar!/" />
++      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/res" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES>
++      <root url="jar://C:/Android/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
