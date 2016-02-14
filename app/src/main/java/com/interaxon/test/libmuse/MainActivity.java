@@ -178,7 +178,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
         final WeakReference<Activity> activityRef;
         private MuseFileWriter fileWriter;
-//        public static
+        public static int y_axis = 0;
+        public static int x_axis = 0;
+        public static boolean eyesOpen = true;
 
         DataListener(final WeakReference<Activity> activityRef) {
             this.activityRef = activityRef;
@@ -229,7 +231,13 @@ public class MainActivity extends Activity implements OnClickListener {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        TextView blinkText = (TextView) findViewById(R.id.blinkText);
+                    	if(eyesOpen == true){
+                    		y_axis = boolToInt(p.getBlink());
+                    		eyesOpen = false;
+                    	} else{
+                    		eyesOpen = true;
+                    	}
+//                    	TextView blinkText = (TextView) findViewById(R.id.blinkText);
 //                        blinkText.setText(String.format(
 //                            "%s%d", blinkText.getText().toString(), boolToInt(p.getBlink())));
                     }
@@ -237,12 +245,13 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         }
 
-//        private void updateAccelerometer(final ArrayList<Double> data) {
-//            Activity activity = activityRef.get();
-//            if (activity != null) {
-//                activity.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
+        private void updateAccelerometer(final ArrayList<Double> data) {
+            Activity activity = activityRef.get();
+            if (activity != null) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                    	x-axis = data.get(Accelerometer.LEFT_RIGHT.ordinal());
 //                        TextView acc_x = (TextView) findViewById(R.id.acc_x);
 //                        TextView acc_y = (TextView) findViewById(R.id.acc_y);
 //                        TextView acc_z = (TextView) findViewById(R.id.acc_z);
@@ -252,10 +261,10 @@ public class MainActivity extends Activity implements OnClickListener {
 //                                "%6.2f", data.get(Accelerometer.UP_DOWN.ordinal())));
 //                        acc_z.setText(String.format(
 //                                "%6.2f", data.get(Accelerometer.LEFT_RIGHT.ordinal())));
-//                    }
-//                });
-//            }
-//        }
+                    }
+                });
+            }
+        }
 
 //        private void updateEeg(final ArrayList<Double> data) {
 //            Activity activity = activityRef.get();
