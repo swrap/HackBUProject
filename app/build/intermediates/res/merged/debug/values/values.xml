@@ -17,6 +17,7 @@
     <string name="pause">Pause/Resume</string>
     <string name="refresh">Refresh</string>
     <string name="status">Connection Status:</string>
+    <string name="title_activity_game">game</string>
     <string name="undefined">unknown</string>
     <string name="version">Version:</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">

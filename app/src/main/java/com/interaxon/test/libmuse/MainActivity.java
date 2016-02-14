@@ -11,8 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.SyncStateContract;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -74,6 +77,7 @@ import org.w3c.dom.Text;
  * on the screen.
  */
 public class MainActivity extends Activity implements OnClickListener {
+    public int temperoony = 5;
     /**
      * Connection listener updates UI with new connection status and logs it.
      */
@@ -105,10 +109,25 @@ public class MainActivity extends Activity implements OnClickListener {
                             connectT.setText("Attempting to Connect...");
                             ProgressBar progressConnection = (ProgressBar)findViewById(R.id.progressConnection);
                             progressConnection.setVisibility(View.VISIBLE);
-                            try {
-                                muse.runAsynchronously();
-                            } catch (Exception e) {
-                                Log.e("Muse Headband", e.toString());
+                            final List<Muse> pairedMuses = MuseManager.getPairedMuses();
+                            Log.i("Muse", "Size: " + pairedMuses.size());
+                            if(pairedMuses.size() > 0)
+                            {
+                                muse = pairedMuses.get(0);
+                                runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        muse.runAsynchronously();
+                                    } catch (Exception e) {
+                                        Log.e("Muse Headband", e.toString());
+                                    }
+                                }
+                            });
+                            }
+                            else
+                            {
+                                connectT.setText("No bluetooth Muse devices paired...");
                             }
                         }
                         else if(current == ConnectionState.CONNECTING)
@@ -124,6 +143,13 @@ public class MainActivity extends Activity implements OnClickListener {
                             connectT.setText("You are connected to device: " + muse.getName().toString());
                             ProgressBar progressConnection = (ProgressBar)findViewById(R.id.progressConnection);
                             progressConnection.setVisibility(View.INVISIBLE);
+
+                            Button easyB = (Button) findViewById(R.id.easyButton);
+                            easyB.setEnabled(true);
+                            Button mediumB = (Button) findViewById(R.id.mediumButton);
+                            mediumB.setEnabled(true);
+                            Button hardB = (Button) findViewById(R.id.hardButton);
+                            hardB.setEnabled(true);
                         }
                         else if(current == ConnectionState.UNKNOWN)
                         {
@@ -151,6 +177,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         final WeakReference<Activity> activityRef;
         private MuseFileWriter fileWriter;
+        public static
 
         DataListener(final WeakReference<Activity> activityRef) {
             this.activityRef = activityRef;
@@ -158,7 +185,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         @Override
         public void receiveMuseDataPacket(MuseDataPacket p) {
-            Log.i("MUSEMUSEMUSE","WE IN");
+            Log.i("Muse","Data packet");
             switch (p.getPacketType()) {
                 case EEG:
 //                    updateEeg(p.getValues());
@@ -189,71 +216,71 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         }
 
-        private void updateAccelerometer(final ArrayList<Double> data) {
-            Activity activity = activityRef.get();
-            if (activity != null) {
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView acc_x = (TextView) findViewById(R.id.acc_x);
-                        TextView acc_y = (TextView) findViewById(R.id.acc_y);
-                        TextView acc_z = (TextView) findViewById(R.id.acc_z);
-                        acc_x.setText(String.format(
-                                "%6.2f", data.get(Accelerometer.FORWARD_BACKWARD.ordinal())));
-                        acc_y.setText(String.format(
-                                "%6.2f", data.get(Accelerometer.UP_DOWN.ordinal())));
-                        acc_z.setText(String.format(
-                                "%6.2f", data.get(Accelerometer.LEFT_RIGHT.ordinal())));
-                    }
-                });
-            }
-        }
+//        private void updateAccelerometer(final ArrayList<Double> data) {
+//            Activity activity = activityRef.get();
+//            if (activity != null) {
+//                activity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        TextView acc_x = (TextView) findViewById(R.id.acc_x);
+//                        TextView acc_y = (TextView) findViewById(R.id.acc_y);
+//                        TextView acc_z = (TextView) findViewById(R.id.acc_z);
+//                        acc_x.setText(String.format(
+//                                "%6.2f", data.get(Accelerometer.FORWARD_BACKWARD.ordinal())));
+//                        acc_y.setText(String.format(
+//                                "%6.2f", data.get(Accelerometer.UP_DOWN.ordinal())));
+//                        acc_z.setText(String.format(
+//                                "%6.2f", data.get(Accelerometer.LEFT_RIGHT.ordinal())));
+//                    }
+//                });
+//            }
+//        }
 
-        private void updateEeg(final ArrayList<Double> data) {
-            Activity activity = activityRef.get();
-            if (activity != null) {
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                         TextView tp9 = (TextView) findViewById(R.id.eeg_tp9);
-                         TextView fp1 = (TextView) findViewById(R.id.eeg_fp1);
-                         TextView fp2 = (TextView) findViewById(R.id.eeg_fp2);
-                         TextView tp10 = (TextView) findViewById(R.id.eeg_tp10);
-                         tp9.setText(String.format(
-                            "%6.2f", data.get(Eeg.TP9.ordinal())));
-                         fp1.setText(String.format(
-                            "%6.2f", data.get(Eeg.FP1.ordinal())));
-                         fp2.setText(String.format(
-                            "%6.2f", data.get(Eeg.FP2.ordinal())));
-                         tp10.setText(String.format(
-                            "%6.2f", data.get(Eeg.TP10.ordinal())));
-                    }
-                });
-            }
-        }
+//        private void updateEeg(final ArrayList<Double> data) {
+//            Activity activity = activityRef.get();
+//            if (activity != null) {
+//                activity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                         TextView tp9 = (TextView) findViewById(R.id.eeg_tp9);
+//                         TextView fp1 = (TextView) findViewById(R.id.eeg_fp1);
+//                         TextView fp2 = (TextView) findViewById(R.id.eeg_fp2);
+//                         TextView tp10 = (TextView) findViewById(R.id.eeg_tp10);
+//                         tp9.setText(String.format(
+//                            "%6.2f", data.get(Eeg.TP9.ordinal())));
+//                         fp1.setText(String.format(
+//                            "%6.2f", data.get(Eeg.FP1.ordinal())));
+//                         fp2.setText(String.format(
+//                            "%6.2f", data.get(Eeg.FP2.ordinal())));
+//                         tp10.setText(String.format(
+//                            "%6.2f", data.get(Eeg.TP10.ordinal())));
+//                    }
+//                });
+//            }
+//        }
 
-        private void updateAlphaRelative(final ArrayList<Double> data) {
-            Activity activity = activityRef.get();
-            if (activity != null) {
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView elem1 = (TextView) findViewById(R.id.elem1);
-                        TextView elem2 = (TextView) findViewById(R.id.elem2);
-                        TextView elem3 = (TextView) findViewById(R.id.elem3);
-                        TextView elem4 = (TextView) findViewById(R.id.elem4);
-                        elem1.setText(String.format(
-                                "%6.2f", data.get(Eeg.TP9.ordinal())));
-                        elem2.setText(String.format(
-                                "%6.2f", data.get(Eeg.FP1.ordinal())));
-                        elem3.setText(String.format(
-                                "%6.2f", data.get(Eeg.FP2.ordinal())));
-                        elem4.setText(String.format(
-                                "%6.2f", data.get(Eeg.TP10.ordinal())));
-                    }
-                });
-            }
-        }
+//        private void updateAlphaRelative(final ArrayList<Double> data) {
+//            Activity activity = activityRef.get();
+//            if (activity != null) {
+//                activity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        TextView elem1 = (TextView) findViewById(R.id.elem1);
+//                        TextView elem2 = (TextView) findViewById(R.id.elem2);
+//                        TextView elem3 = (TextView) findViewById(R.id.elem3);
+//                        TextView elem4 = (TextView) findViewById(R.id.elem4);
+//                        elem1.setText(String.format(
+//                                "%6.2f", data.get(Eeg.TP9.ordinal())));
+//                        elem2.setText(String.format(
+//                                "%6.2f", data.get(Eeg.FP1.ordinal())));
+//                        elem3.setText(String.format(
+//                                "%6.2f", data.get(Eeg.FP2.ordinal())));
+//                        elem4.setText(String.format(
+//                                "%6.2f", data.get(Eeg.TP10.ordinal())));
+//                    }
+//                });
+//            }
+//        }
 
         private void updateBattery(final ArrayList<Double> data)
         {
@@ -284,7 +311,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.start_page);
+        setContentView(R.layout.activity_main);
         Button easyB = (Button) findViewById(R.id.easyButton);
         easyB.setOnClickListener(this);
         Button mediumB = (Button) findViewById(R.id.mediumButton);
@@ -315,15 +342,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
         if(v.getId() == R.id.easyButton)
         {
-
+            startActivity(new Intent(getApplicationContext(),game.class));
         }
         else if(v.getId() == R.id.mediumButton)
         {
-
+            startActivity(new Intent(getApplicationContext(),game.class));
         }
         else if(v.getId() == R.id.hardButton)
         {
-
+            startActivity(new Intent(getApplicationContext(),game.class));
         }
     }
 
