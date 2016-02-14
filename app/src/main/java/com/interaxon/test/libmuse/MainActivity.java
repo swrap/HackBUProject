@@ -45,6 +45,7 @@ import com.interaxon.libmuse.MuseFileWriter;
 import com.interaxon.libmuse.MuseManager;
 import com.interaxon.libmuse.MusePreset;
 import com.interaxon.libmuse.MuseVersion;
+import com.interaxon.test.libmuse.R;
 
 import org.w3c.dom.Text;
 
@@ -185,7 +186,27 @@ public class MainActivity extends Activity implements OnClickListener {
         @Override
         public void receiveMuseArtifactPacket(MuseArtifactPacket p) {
             if (p.getHeadbandOn() && p.getBlink()) {
-                Log.i("Artifacts", "blink");
+                updateArtifacts(p);
+            }
+        }
+        
+        protected int boolToInt(boolean b){
+        	if(b==true)
+        		return 1;
+        	return 0;
+        }
+        
+        private void updateArtifacts(final MuseArtifactPacket p) {
+            Activity activity = activityRef.get();
+            if (activity != null) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView blinkText = (TextView) findViewById(R.id.blinkText);
+                        blinkText.setText(String.format(
+                            "%s%d", blinkText.getText().toString(), boolToInt(p.getBlink())));
+                    }
+                });
             }
         }
 
