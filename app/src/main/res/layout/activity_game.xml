@@ -9,13 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.interaxon.test.libmuse.game">
 
-    <TextView
+    <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/gameInt"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp" />
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="76dp" />
+
 </RelativeLayout>

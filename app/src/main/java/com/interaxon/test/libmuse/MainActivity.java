@@ -78,7 +78,9 @@ import org.w3c.dom.Text;
  * on the screen.
  */
 public class MainActivity extends Activity implements OnClickListener {
-    public int temperoony = 5;
+    public static int y_axis = 0;
+    public static int x_axis = 0;
+    public static boolean eyesOpen = true;
     /**
      * Connection listener updates UI with new connection status and logs it.
      */
@@ -178,9 +180,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
         final WeakReference<Activity> activityRef;
         private MuseFileWriter fileWriter;
-        public static int y_axis = 0;
-        public static int x_axis = 0;
-        public static boolean eyesOpen = true;
 
         DataListener(final WeakReference<Activity> activityRef) {
             this.activityRef = activityRef;
