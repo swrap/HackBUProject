@@ -217,13 +217,13 @@ public class MainActivity extends Activity implements OnClickListener {
                 updateArtifacts(p);
             }
         }
-        
+
         protected int boolToInt(boolean b){
         	if(b==true)
         		return 1;
         	return 0;
         }
-        
+
         private void updateArtifacts(final MuseArtifactPacket p) {
             Activity activity = activityRef.get();
             if (activity != null) {
