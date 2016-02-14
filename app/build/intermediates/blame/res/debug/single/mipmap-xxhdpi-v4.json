@@ -1,6 +1,14 @@
 [
     {
+        "merged": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\rocket.png",
+        "source": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\src\\main\\res\\mipmap-xxhdpi\\rocket.png"
+    },
+    {
         "merged": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\tank.png",
+        "source": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\src\\main\\res\\mipmap-xxhdpi\\tank.png"
     }
 ]
