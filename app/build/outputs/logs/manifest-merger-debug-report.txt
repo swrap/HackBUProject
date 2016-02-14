@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:2:1-43:12
+ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:3:5-41
 		INJECTED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml
@@ -47,7 +47,7 @@ ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src
 	android:name
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:16:30-85
 application
-ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:18:5-41:19
+ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:18:5-49:19
 MERGED from [com.android.support:support-v4:21.0.3] C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\AndroidManifest.xml:16:5-19
 	android:label
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:21:9-41
@@ -75,17 +75,25 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:30:27-74
-activity#com.interaxon.test.libmuse.game
+activity#com.interaxon.test.libmuse.blink_fast
 ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:33:9-40:20
 	android:label
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:35:13-56
 	android:parentActivityName
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:36:13-55
 	android:name
-		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:34:13-33
+		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:34:13-39
 meta-data#android.support.PARENT_ACTIVITY
 ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:37:13-39:75
 	android:value
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:39:17-72
 	android:name
 		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:38:17-63
+activity#com.interaxon.test.libmuse.rocket_fast
+ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:41:9-48:20
+	android:label
+		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:43:13-63
+	android:parentActivityName
+		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:44:13-55
+	android:name
+		ADDED from C:\Users\Jesse Saran\AndroidStudioProjects\TestLibMuseAndroid\app\src\main\AndroidManifest.xml:42:13-40

@@ -14,43 +14,30 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.SyncStateContract;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.interaxon.libmuse.Accelerometer;
-import com.interaxon.libmuse.AnnotationData;
-import com.interaxon.libmuse.Battery;
 import com.interaxon.libmuse.ConnectionState;
-import com.interaxon.libmuse.Eeg;
 import com.interaxon.libmuse.LibMuseVersion;
-import com.interaxon.libmuse.MessageType;
 import com.interaxon.libmuse.Muse;
 import com.interaxon.libmuse.MuseArtifactPacket;
-import com.interaxon.libmuse.MuseConfiguration;
 import com.interaxon.libmuse.MuseConnectionListener;
 import com.interaxon.libmuse.MuseConnectionPacket;
 import com.interaxon.libmuse.MuseDataListener;
 import com.interaxon.libmuse.MuseDataPacket;
 import com.interaxon.libmuse.MuseDataPacketType;
 import com.interaxon.libmuse.MuseFileFactory;
-import com.interaxon.libmuse.MuseFileReader;
 import com.interaxon.libmuse.MuseFileWriter;
 import com.interaxon.libmuse.MuseManager;
 import com.interaxon.libmuse.MusePreset;
-import com.interaxon.libmuse.MuseVersion;
-import com.interaxon.test.libmuse.R;
-
-import org.w3c.dom.Text;
 
 
 /**
@@ -108,6 +95,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     public void run() {
                         if(current == ConnectionState.DISCONNECTED)
                         {
+                            Log.i("Where","HERE");
                             TextView connectT = (TextView)findViewById(R.id.connectionStatus);
                             connectT.setText("Attempting to Connect...");
                             ProgressBar progressConnection = (ProgressBar)findViewById(R.id.progressConnection);
@@ -136,7 +124,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         else if(current == ConnectionState.CONNECTING)
                         {
                             TextView connectT = (TextView)findViewById(R.id.connectionStatus);
-                            connectT.setText("Almost Connected!...");
+                            connectT.setText("Trying to connect...");
                             ProgressBar progressConnection = (ProgressBar)findViewById(R.id.progressConnection);
                             progressConnection.setVisibility(View.VISIBLE);
                         }
@@ -144,6 +132,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         {
                             TextView connectT = (TextView)findViewById(R.id.connectionStatus);
                             connectT.setText("You are connected to device: " + muse.getName().toString());
+                            connectT.setGravity(Gravity.CENTER_HORIZONTAL);
                             ProgressBar progressConnection = (ProgressBar)findViewById(R.id.progressConnection);
                             progressConnection.setVisibility(View.INVISIBLE);
 
@@ -151,8 +140,6 @@ public class MainActivity extends Activity implements OnClickListener {
                             easyB.setEnabled(true);
                             Button mediumB = (Button) findViewById(R.id.mediumButton);
                             mediumB.setEnabled(true);
-                            Button hardB = (Button) findViewById(R.id.hardButton);
-                            hardB.setEnabled(true);
                         }
                         else if(current == ConnectionState.UNKNOWN)
                         {
@@ -187,13 +174,12 @@ public class MainActivity extends Activity implements OnClickListener {
 
         @Override
         public void receiveMuseDataPacket(MuseDataPacket p) {
-            Log.i("Muse","Data packet");
             switch (p.getPacketType()) {
                 case EEG:
 //                    updateEeg(p.getValues());
                     break;
                 case ACCELEROMETER:
-//                    updateAccelerometer(p.getValues());
+                    updateAccelerometer(p.getValues());
                     break;
                 case ALPHA_RELATIVE:
 //                    updateAlphaRelative(p.getValues());
@@ -251,68 +237,9 @@ public class MainActivity extends Activity implements OnClickListener {
                     @Override
                     public void run() {
                     	x_axis = data.get(Accelerometer.LEFT_RIGHT.ordinal()).intValue();
-//                        TextView acc_x = (TextView) findViewById(R.id.acc_x);
-//                        TextView acc_y = (TextView) findViewById(R.id.acc_y);
-//                        TextView acc_z = (TextView) findViewById(R.id.acc_z);
-//                        acc_x.setText(String.format(
-//                                "%6.2f", data.get(Accelerometer.FORWARD_BACKWARD.ordinal())));
-//                        acc_y.setText(String.format(
-//                                "%6.2f", data.get(Accelerometer.UP_DOWN.ordinal())));
-//                        acc_z.setText(String.format(
-//                                "%6.2f", data.get(Accelerometer.LEFT_RIGHT.ordinal())));
                     }
                 });
             }
-        }
-
-//        private void updateEeg(final ArrayList<Double> data) {
-//            Activity activity = activityRef.get();
-//            if (activity != null) {
-//                activity.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                         TextView tp9 = (TextView) findViewById(R.id.eeg_tp9);
-//                         TextView fp1 = (TextView) findViewById(R.id.eeg_fp1);
-//                         TextView fp2 = (TextView) findViewById(R.id.eeg_fp2);
-//                         TextView tp10 = (TextView) findViewById(R.id.eeg_tp10);
-//                         tp9.setText(String.format(
-//                            "%6.2f", data.get(Eeg.TP9.ordinal())));
-//                         fp1.setText(String.format(
-//                            "%6.2f", data.get(Eeg.FP1.ordinal())));
-//                         fp2.setText(String.format(
-//                            "%6.2f", data.get(Eeg.FP2.ordinal())));
-//                         tp10.setText(String.format(
-//                            "%6.2f", data.get(Eeg.TP10.ordinal())));
-//                    }
-//                });
-//            }
-//        }
-
-//        private void updateAlphaRelative(final ArrayList<Double> data) {
-//            Activity activity = activityRef.get();
-//            if (activity != null) {
-//                activity.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        TextView elem1 = (TextView) findViewById(R.id.elem1);
-//                        TextView elem2 = (TextView) findViewById(R.id.elem2);
-//                        TextView elem3 = (TextView) findViewById(R.id.elem3);
-//                        TextView elem4 = (TextView) findViewById(R.id.elem4);
-//                        elem1.setText(String.format(
-//                                "%6.2f", data.get(Eeg.TP9.ordinal())));
-//                        elem2.setText(String.format(
-//                                "%6.2f", data.get(Eeg.FP1.ordinal())));
-//                        elem3.setText(String.format(
-//                                "%6.2f", data.get(Eeg.FP2.ordinal())));
-//                        elem4.setText(String.format(
-//                                "%6.2f", data.get(Eeg.TP10.ordinal())));
-//                    }
-//                });
-//            }
-//        }
-
-        private void updateBattery(final ArrayList<Double> data)
-        {
         }
 
         public void setFileWriter(MuseFileWriter fileWriter) {
@@ -345,8 +272,6 @@ public class MainActivity extends Activity implements OnClickListener {
         easyB.setOnClickListener(this);
         Button mediumB = (Button) findViewById(R.id.mediumButton);
         mediumB.setOnClickListener(this);
-        Button hardB = (Button) findViewById(R.id.hardButton);
-        hardB.setOnClickListener(this);
 
         File dir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
         fileWriter = MuseFileFactory.getMuseFileWriter(
@@ -358,11 +283,25 @@ public class MainActivity extends Activity implements OnClickListener {
         //attempt to connect -jes
         MuseManager.refreshPairedMuses();
         final List<Muse> pairedMuses = MuseManager.getPairedMuses();
-        Log.i("Muse", "Size: " + pairedMuses.size());
+        Log.i("Muse", "Size: " + pairedMuses.size() + " " + ConnectionState.values());
         if(pairedMuses.size() > 0)
         {
             muse = pairedMuses.get(0);
-            configureLibrary();
+            if(muse.getConnectionState() != ConnectionState.CONNECTED) {
+                configureLibrary();
+            }
+            else
+            {
+
+                TextView connectT = (TextView)findViewById(R.id.connectionStatus);
+                connectT.setText("You are connected to device: " + muse.getName().toString());
+                connectT.setGravity(Gravity.CENTER_HORIZONTAL);
+                ProgressBar progressConnection = (ProgressBar)findViewById(R.id.progressConnection);
+                progressConnection.setVisibility(View.INVISIBLE);
+
+                easyB.setEnabled(true);
+                mediumB.setEnabled(true);
+            }
         }
     }
 
@@ -371,15 +310,11 @@ public class MainActivity extends Activity implements OnClickListener {
 
         if(v.getId() == R.id.easyButton)
         {
-            startActivity(new Intent(getApplicationContext(),game.class));
+            startActivity(new Intent(getApplicationContext(),blink_fast.class));
         }
         else if(v.getId() == R.id.mediumButton)
         {
-            startActivity(new Intent(getApplicationContext(),game.class));
-        }
-        else if(v.getId() == R.id.hardButton)
-        {
-            startActivity(new Intent(getApplicationContext(),game.class));
+            startActivity(new Intent(getApplicationContext(),rocket_fast.class));
         }
     }
 

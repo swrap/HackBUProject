@@ -18,17 +18,17 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090006;
+        public static final int action_settings=0x7f090005;
         public static final int climbText=0x7f090000;
-        public static final int connectionStatus=0x7f090005;
+        public static final int connectionStatus=0x7f090004;
         public static final int easyButton=0x7f090001;
-        public static final int hardButton=0x7f090003;
         public static final int mediumButton=0x7f090002;
-        public static final int progressConnection=0x7f090004;
+        public static final int progressConnection=0x7f090003;
     }
     public static final class layout {
         public static final int activity_game=0x7f040000;
         public static final int activity_main=0x7f040001;
+        public static final int activity_rocket_fast=0x7f040002;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -55,8 +55,9 @@ public final class R {
         public static final int refresh=0x7f07000d;
         public static final int status=0x7f07000e;
         public static final int title_activity_game=0x7f07000f;
-        public static final int undefined=0x7f070010;
-        public static final int version=0x7f070011;
+        public static final int title_activity_rocket_fast=0x7f070010;
+        public static final int undefined=0x7f070011;
+        public static final int version=0x7f070012;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 

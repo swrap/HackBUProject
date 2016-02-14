@@ -31,25 +31,18 @@
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Easy"
+			android:text="Blinky Blink"
 			android:id="@+id/easyButton"
 			android:clickable="false"
-			android:enabled="true" />
-
-		<Button
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Medium"
-			android:id="@+id/mediumButton"
 			android:enabled="false" />
 
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Hard"
-			android:id="@+id/hardButton"
-			android:enabled="false"
-			android:nestedScrollingEnabled="false" />
+			android:text="Rocket Fast!"
+			android:id="@+id/mediumButton"
+			android:enabled="false" />
+
 	</LinearLayout>
 
 	<ProgressBar

@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".game"
+            android:name=".blink_fast"
             android:label="@string/title_activity_game"
             android:parentActivityName=".MainActivity">
             <meta-data

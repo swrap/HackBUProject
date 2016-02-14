@@ -18,6 +18,7 @@
     <string name="pause">Pause/Resume</string>
     <string name="drop">Drop</string>
     <string name="muse_elem">Elements:</string>
-    <string name="title_activity_game">game</string>
+    <string name="title_activity_game">Blinky Blinkers</string>
+    <string name="title_activity_rocket_fast">Blast Off to the MOON!</string>
 
 </resources>

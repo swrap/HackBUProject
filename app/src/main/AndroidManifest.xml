@@ -31,8 +31,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".game"
+            android:name=".blink_fast"
             android:label="@string/title_activity_game"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.interaxon.test.libmuse.MainActivity" />
+        </activity>
+        <activity
+            android:name=".rocket_fast"
+            android:label="@string/title_activity_rocket_fast"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

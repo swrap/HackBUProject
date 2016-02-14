@@ -6,5 +6,9 @@
     {
         "merged": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_rocket_fast.xml",
+        "source": "C:\\Users\\Jesse Saran\\AndroidStudioProjects\\TestLibMuseAndroid\\app\\src\\main\\res\\layout\\activity_rocket_fast.xml"
     }
 ]
